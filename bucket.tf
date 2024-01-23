@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "bucket" {
 }
 resource "aws_s3_object" "hello" {
   depends_on = [ data.archive_file.hello ]
-  bucket = "aws_s3_bucket.bucket.bucket"
+  bucket = aws_s3_bucket.bucket.bucket
   key    = "hello.py"
   source = "hello.zip"
 }
