@@ -11,6 +11,11 @@ resource "aws_iam_role" "lambda-ex" {
         Principal = {
           Service = "lambda.amazonaws.com"
         }
+        Condition = {
+          StringEquals = {
+            "aws:PrincipalService": "lambda.amazonaws.com"
+          }
+        }
       },
     ]
   })
