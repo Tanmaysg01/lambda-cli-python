@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "example" {
+resource "aws_s3_bucket" "bucket" {
   bucket = "shell-lambda-bucket-001"
 }
 
@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "example" {
 }
 resource "aws_s3_object" "hello" {
   depends_on = [ data.archive_file.hello ]
-  bucket = "shell-lambda-bucket-001"
+  bucket = "arn:aws:s3:::bucket"
   key    = "hello.py"
   source = "hello.zip"
 }
