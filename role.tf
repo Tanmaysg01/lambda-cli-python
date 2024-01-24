@@ -2,23 +2,21 @@ resource "aws_iam_role" "lambda-ex" {
   name = "lambda-ex"
 
   assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "lambda.amazonaws.com"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "lambda.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "sts:AssumeRole"
+            ]
         }
-        Condition = {
-          StringEquals = {
-            "aws:PrincipalService": "lambda.amazonaws.com"
-          }
-        }
-      },
     ]
-  })
+})
 }
 
 resource "aws_iam_policy" "lambda-ex-policy" {
